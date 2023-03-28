@@ -1,0 +1,811 @@
+:root {
+  --clr-primary-400: rgb(220, 197, 149);
+  --clr-primary-300: #6d6536;
+
+  --clr-neutral-500: hsl(60, 3%, 5%);
+  --clr-neutral-400: #151411;
+  --clr-neutral-300: hsl(60, 5%, 12%);
+  --clr-neutral-200: hsl(60, 6%, 20%);
+
+  --ff-primary: "PT Serif", serif;
+
+  /* referencing a custom property from a custom property makes it easier if the font needs to be changed in future */
+
+  --ff-body: var(--ff-primary);
+  --ff-heading: var(--ff-primary);
+
+  --fw-regular: 400;
+
+  --fw-bold: 700;
+
+  --fs-300: 0.8125rem;
+  --fs-400: 0.875rem;
+  --fs-500: 0.9375rem;
+  --fs-600: 1rem;
+  --fs-700: 1.875rem;
+  --fs-800: 2.5rem;
+  --fs-900: 3.5rem;
+
+  --fs-primary-heading: var(--fs-800);
+  --fs-secondary-heading: var(--fs-700);
+  --fs-body: var(--fs-400);
+  --fs-button: var(--fs-300);
+
+  --size-100: 0.25rem;
+  --size-200: 0.5rem;
+  --size-300: 0.75rem;
+  --size-400: 1rem;
+  --size-500: 1.25rem;
+  --size-600: 1.5rem;
+  --size-700: 2rem;
+  --size-800: 3rem;
+  --size-900: 4rem;
+  --size-1000: 5rem;
+  --size-1200: 7rem;
+}
+
+@media (min-width: 50em) {
+  :root {
+    /* fonts for larger screens */
+
+    /* --fs-700: 3.5rem;
+    --fs-600: 2.5rem; */
+
+    --fs-body: var(--fs-500);
+    --fs-primary-heading: var(--fs-900);
+    --fs-secondary-heading: var(--fs-800);
+  }
+}
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  height: 100%;
+}
+/* Set core body defaults */
+body {
+  /* min-height: 100vh; */
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+p:not([class]) {
+  /* the  p:not([class]) selector is because the cta has a p tag i don't want these styles to apply to*/
+  opacity: 0.7;
+  max-width: 39ch;
+}
+
+p[data-width="wide"] {
+  max-width: 50ch;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* general styling */
+
+body {
+  font-size: var(--fs-body);
+  font-family: var(--ff-body);
+  color: var(--clr-primary-300);
+  background-color: var(--clr-neutral-400);
+}
+
+.button {
+  display: inline-flex;
+  text-decoration: none;
+  /* just in case a link is styled like a button  */
+  border: 0;
+  border-radius: 100vmax;
+  line-height: 1;
+  padding: 1.25em 2.5em;
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-button);
+  color: var(--clr-primary-400);
+  background-color: var(--clr-neutral-300);
+  box-shadow: 0 1.25em 1em -1em var(--clr-neutral-500);
+}
+.button[data-type="inverted"] {
+  background-color: var(--clr-primary-300);
+  color: var(--clr-neutral-300);
+}
+button:hover,
+.button:focus-visible {
+  background-color: var(--clr-neutral-200);
+}
+.button[data-type="inverted"]:hover,
+.button[data-type="inverted"]:focus-visible {
+  background-color: var(--clr-primary-300);
+  color: var(--clr-neutral-200);
+}
+
+/* header and navigation */
+.primary-header {
+  padding-top: var(--size-700);
+}
+
+.nav-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mobile-nav-toggle {
+  display: none;
+}
+
+.nav-list {
+  display: flex;
+  gap: clamp(var(--size-500), 5vw, var(--size-900));
+}
+
+.primary-navigation {
+  color: var(--clr-primary-300);
+
+  font-weight: var(--fw-bold);
+}
+
+.nav-list a,
+.linked-card {
+  color: inherit;
+  text-decoration: none;
+}
+.nav-list a:hover,
+.nav-list a:focus {
+  color: var(--clr-primary-400);
+}
+
+@media (max-width: 50em) {
+  .primary-navigation {
+    display: none;
+
+    position: absolute;
+    padding: var(--size-700);
+    inset: 7rem 2rem auto;
+
+    max-width: 25rem;
+    margin-left: auto;
+
+    border-radius: var(--size-100);
+
+    background-color: var(--clr-neutral-300);
+
+    /* box-shadow: 0 0 0.5em rgb(109, 101, 54, 0.125); */
+    box-shadow: 0 0 0.5em rgb(0, 0, 0, 0.05);
+  }
+
+  /*! IMPORTANT add a kind of backdrop effect for when the mobile menu is open  OR Disable scrolling*/
+  /* .primary-header[data-overlay] ::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    
+    background-image: linear-gradient(
+      rgb(220 197 149 /0),
+      rgb(220 197 149 / 0.05)
+    );
+    background-repeat: no-repeat;
+    background-position: center;
+  } */
+
+  .primary-navigation[data-visible] {
+    display: block;
+  }
+
+  .nav-list {
+    display: grid;
+    gap: var(--size-600);
+    text-align: center;
+  }
+
+  .mobile-nav-toggle {
+    display: block;
+    cursor: pointer;
+    /* background-color: #dcc595; */
+    border: 0;
+    padding: 0.5em;
+  }
+
+  .mobile-nav-toggle .icon-close {
+    display: none;
+  }
+}
+
+/* .opened {
+  display: block;
+  position: fixed;
+} */
+
+/* HERO SECTION */
+
+/* hero - image */
+
+.image-frame {
+  position: relative;
+  display: inline-block;
+  padding: 10px;
+  border-radius: 50%;
+  overflow: hidden;
+  animation: bounce 2.3s ease-in-out infinite alternate;
+}
+
+.image-frame::before {
+  content: "";
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  border: 1px solid #a98e0d;
+  border-radius: 50%;
+  transform: rotate(45deg);
+  z-index: -1;
+  box-shadow: 0 0 10px 5px #a98e0d;
+}
+
+.image-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+
+  /* border: 10px solid #a57e00; */
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-25px);
+  }
+}
+
+/* numbered items */
+
+.numbered-items {
+  counter-reset: count;
+  width: fit-content;
+  margin-inline: auto;
+}
+
+.numbered-items li {
+  counter-increment: count;
+}
+.numbered-items div {
+  display: grid;
+  align-items: center;
+  column-gap: var(--size-400);
+  grid-template-columns: min-content 1fr;
+
+  position: relative;
+}
+.numbered-items div::before {
+  content: counter(count, decimal-leading-zero);
+  background-color: var(--clr-primary-400);
+  font-weight: var(--fw-bold);
+  color: var(--clr-neutral-400);
+
+  padding: var(--size-200) var(--size-500);
+  border-radius: 100vw;
+
+  /* box-shadow: 10em 0 0 var(--clr-neutral-200); */
+}
+
+.numbered-items__body {
+  grid-column: 1 / -1;
+}
+
+.numbered-items__title {
+  /* selecting the classname  is better than styling the h3 directly because another time this title could be an h2 ... */
+
+  /* background-color: var(--clr-primary-400); */
+}
+
+.numbered-items__title::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 0 0;
+
+  border-radius: 100vw 0 0 00vw;
+  grid-column: 1/-1;
+  grid-row: 1/2;
+
+  background-color: var(--clr-neutral-200);
+  z-index: -1;
+}
+
+@media (min-width: 30em) {
+  .numbered-items__body {
+    grid-column: 2/ -1;
+  }
+}
+/* --------------------CARD-------------------- */
+
+.snaps-inline {
+  scroll-snap-type: inline proximity;
+  scroll-padding-inline: var(--size-1200);
+}
+.snaps-inline > * {
+  scroll-snap-align: center;
+}
+
+/* custom scrollbar */
+.cards-container::-webkit-scrollbar {
+  height: 1.5em;
+}
+.cards-container::-webkit-scrollbar-track {
+  background-color: var(--clr-neutral-200);
+  border-radius: 100vw;
+  margin-block: 0.5em;
+}
+.cards-container::-webkit-scrollbar-thumb {
+  background: var(--clr-primary-300);
+  border-radius: 100vw;
+}
+.cards-container::-webkit-scrollbar-thumb:hover {
+  background: var(--clr-primary-400);
+}
+
+@supports (scrollbar-color: var(--clr-primary-300) var(--clr-neutral-200)) {
+  .cards-container {
+    scrollbar-color: var(--clr-primary-300) var(--clr-neutral-200);
+  }
+}
+
+.cards-container {
+  /* add more margin  to the container so the full shadow of the first element is seen*/
+  margin-block: 9rem;
+
+  position: relative;
+  /* width: 100%; */
+  /* display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; */
+
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: clamp(200px, 44%, 300px);
+  gap: var(--size-1200);
+
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  /* overflow-y: visible; */
+
+  padding: var(--size-1200) var(--size-700) var(--size-1200);
+
+  transform: skewY(-10deg);
+
+  /* --max-width: 1100px;
+  --container-inline-padding: 1rem;
+
+  width: min(var(--max-width), 100% - (var(--container-inline-padding) * 2));
+  margin-inline: auto; */
+}
+
+@media (max-width) {
+}
+
+.card {
+  position: relative;
+
+  max-width: 300px;
+  height: 450px;
+
+  background-color: var(--clr-neutral-200);
+  transition: 0.5s;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: -16px;
+  left: 0;
+
+  width: 100%;
+  height: 16px;
+
+  background-color: var(--clr-primary-400);
+
+  transform-origin: bottom;
+  transform: skewX(45deg);
+  transform: 0.5s;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  top: -16px;
+  left: -16px;
+
+  width: 16px;
+  height: 50%;
+
+  background-color: var(--clr-primary-400);
+
+  transform-origin: left;
+  transform: skewY(45deg);
+  transform: 0.5s;
+
+  border-bottom: 450px solid #494444;
+}
+
+.card img {
+  max-width: 100px;
+  aspect-ratio: 0.5;
+}
+
+.card:hover {
+  transform: translateY(-2.5em);
+}
+
+.card-imgBx {
+  position: relative;
+  max-width: 300px;
+  height: 250px;
+  background-color: var(--clr-primary-400);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.card-title {
+  position: relative;
+  color: var(--clr-neutral-400);
+  margin-block-start: var(--size-300);
+}
+
+.card-content {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  padding: 1.2em;
+  text-align: center;
+  background-color: var(--clr-neutral-200);
+}
+
+.card-content::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 450px;
+  background-image: linear-gradient(
+    transparent,
+    transparent,
+    rgb(220, 197, 149, 0.2)
+  );
+
+  transform-origin: bottom;
+  transform: skewX(45deg);
+  transition: 0.5s;
+
+  pointer-events: none;
+  z-index: -1;
+}
+
+.card:hover .card-content::before {
+  transform: translateY(2rem) skewX(45deg);
+  filter: blur;
+  opacity: 0.5;
+}
+
+.card:nth-child(1) {
+  z-index: 3;
+}
+.card:nth-child(2) {
+  z-index: 2;
+}
+.card:nth-child(3) {
+  z-index: 1;
+}
+
+/* --------------------CARD-------------------- */
+
+/* cta */
+
+.cta {
+  position: relative;
+  isolation: isolate;
+  text-align: center;
+}
+
+.cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background-image: url("./assets/images/bg-cta-desktop.svg");
+  opacity: 0.25;
+}
+
+@media (min-width: 50em) {
+  .cta {
+    text-align: left;
+  }
+}
+@media (max-width: 50em) {
+  /* doesn't appear necessary */
+
+  /* .cta::before {
+    background-image: url("./assets/images/bg-cta-mobile.svg");
+  } */
+}
+
+/* primary footer */
+
+.primary-footer-wrapper {
+  display: grid;
+  gap: var(--size-600);
+  grid-template-areas:
+    "logo-social"
+    "copyright";
+}
+
+.primary-footer-logo-social {
+  grid-area: logo-social;
+
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: var(--size-700);
+}
+.primary-footer-copyright {
+  grid-area: copyright;
+}
+
+@media (max-width: 50em) {
+  .primary-footer-wrapper > * {
+    margin-inline: auto;
+  }
+}
+
+@media (min-width: 50em) {
+  .primary-footer-wrapper {
+    grid-template-areas: "logo-social copyright";
+  }
+
+  .primary-footer-logo-social {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .primary-footer-copyright {
+    align-self: center;
+    justify-self: end;
+  }
+}
+
+/* social-list */
+.social-list {
+  display: flex;
+  gap: var(--size-600);
+}
+
+.social-icon {
+  width: var(--size-600);
+  aspect-ratio: 1;
+}
+
+.social-list a:is(:hover, :focus-within) .social-icon {
+  /* :is() selector is used to eliminate high specificity from all the classes */
+  fill: var(--clr-primary-400);
+}
+@media (min-width: 50em) {
+  .social-list {
+    display: flex;
+    gap: var(--size-300);
+  }
+  .social-icon {
+    width: var(--size-700);
+  }
+}
+
+/* utility classes */
+/* utility classes should overwrite every other style thus moved way lower down because of cascade */
+.text-primary-400 {
+  color: var(--clr-primary-400);
+}
+.text-primary-300 {
+  color: var(--clr-primary-300);
+}
+.text-neutral-100 {
+  color: var(--clr-neutral);
+}
+
+.bg-primary-400 {
+  background-color: var(--clr-primary-400);
+}
+.bg-primary-300 {
+  background-color: var(--clr-primary-300);
+}
+.bg-neutral-300 {
+  background-color: var(--clr-neutral-300);
+}
+.bg-neutral-400 {
+  background-color: var(--clr-neutral-400);
+}
+
+.fw-bold {
+  font-weight: var(--fw-bold);
+}
+.fw-regular {
+  font-weight: var(--fw-regular);
+}
+
+.fs-primary-heading {
+  font-size: var(--fs-primary-heading);
+  line-height: 1.1;
+}
+
+.fs-secondary-heading {
+  font-size: var(--fs-secondary-heading);
+  line-height: 1.1;
+}
+
+.fs-300 {
+  font-size: var(--fs-300);
+}
+.fs-400 {
+  font-size: var(--fs-400);
+}
+.fs-500 {
+  font-size: var(--fs-500);
+}
+.fs-500 {
+  font-size: var(--fs-500);
+}
+
+.padding-block-900 {
+  padding-block: var(--size-900);
+}
+.padding-block-700 {
+  padding-block: var(--size-700);
+}
+
+.margin-block-end-700 {
+  margin-block-end: var(--size-700);
+}
+.margin-block-400 {
+  margin-block: var(--size-400);
+}
+.container {
+  --max-width: 1100px;
+  --container-inline-padding: 1rem;
+
+  width: min(var(--max-width), 100% - (var(--container-inline-padding) * 2));
+  margin-inline: auto;
+}
+
+/* .push-right {
+  inline-flex does not allow this
+  margin-left: auto;
+} */
+
+.justify-self-end {
+  justify-self: end;
+}
+.vertical-align-center {
+  align-items: center;
+}
+
+@media (min-width: 50em) {
+  .justify-self-end-md {
+    justify-self: end;
+  }
+}
+.flow * + * {
+  /* selector goes after every child of parent with  classname flow and selects every sibling leaving out the very first element*/
+  /* :where(.flow  :not(:first-child) --- will also make thesame selection*/
+
+  margin-top: var(--flow-spacer, 3em);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-center p {
+  margin-inline: auto;
+}
+
+@media (max-width: 50em) {
+  .text-center-md {
+    text-align: center;
+  }
+  .text-center-md p {
+    margin-inline: auto;
+  }
+}
+
+.even-columns {
+  display: grid;
+  gap: 1em;
+}
+
+/* if utility classes aren't way lower down the button with display-sm-none wil still read display inline-flex because i have set inline-flex on all buttons*/
+.display-sm-none {
+  /* for the sake of the button hidden on smaller screens */
+  display: none;
+}
+
+@media (min-width: 50em) {
+  /* em is used because it id the only unit consistent across all browsers during zoom in and out */
+
+  /* em or rem in media queries don't look at the oot font size */
+
+  .even-columns {
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+  }
+
+  .display-md-inline-flex {
+    display: inline-flex;
+  }
+}
+
+.sr-only {
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+}

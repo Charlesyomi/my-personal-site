@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CARL</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="primary-header">
+      <div class="container">
+        <div class="nav-wrapper">
+          <a href=""
+            ><img src="./assets/icons/logo.svg" alt="Charles Portfolio"
+          /></a>
+          <button
+            class="mobile-nav-toggle"
+            aria-controls="primary-navigation"
+            aria-expanded="false"
+          >
+            <span class="sr-only">Menu</span>
+            <img
+              class="icon-menu"
+              src="./assets/icons/menu.svg"
+              alt=""
+              aria-hidden="true"
+            />
+            <img
+              class="icon-close"
+              src="./assets/icons/close.svg"
+              alt=""
+              aria-hidden="true"
+            />
+          </button>
+          <nav class="primary-navigation" id="primary-navigation">
+            <ul role="list" class="nav-list">
+              <!-- role of list because when we do a list style of none there are some screen readers that don't notice it -->
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#portfolio">Projects</a></li>
+              <!-- <li><a href="#">Contact</a></li> -->
+            </ul>
+          </nav>
+          <button class="button display-md-inline-flex display-sm-none">
+            Contact Me
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="padding-block-900" id="home">
+        <div class="container">
+          <div class="even-columns">
+            <div class="flow">
+              <!-- <span class="fs-primary-heading fw-bold">Hi, I'm</span> -->
+              <h1 class="fs-primary-heading fw-bold">
+                Hi, I'm Charles, a Full-Stack Web Developer
+              </h1>
+              <p>
+                Crafting beautiful and functional web experiences is what I
+                enjoy doing
+              </p>
+              <button class="button">View my work</button>
+            </div>
+            <div>
+              <div class="image-frame">
+                <img
+                  src="./assets/images/my_image_original_3.jpg"
+                  alt="Headshot of Charles Adesoba the site's owner"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="padding-block-900" id="about">
+        <div class="container">
+          <div class="even-columns">
+            <div
+              class="flow text-center-md margin-block-end-700"
+              style="--flow-spacer: 1.5rem"
+            >
+              <h2 class="fs-secondary-heading fw-bold">What I do different?</h2>
+              <p>
+                I'm a full-stack web developer with experience in HTML, CSS,
+                JavaScript, React, Django, Python, Tailwind, and Bootstrap. I'm
+                passionate about crafting responsive and accessible web
+                experiences that meet the highest standards of performance and
+                usability.
+              </p>
+            </div>
+            <div>
+              <ul class="numbered-items | flow" role="list" id="services">
+                <li>
+                  <div class="flow" style="--flow-spacer: 1em">
+                    <h3 class="numbered-items__title fs-500 fw-bold">
+                      Frontend Web Development
+                    </h3>
+                    <p class="numbered-items__body" data-width="wide">
+                      I'm skilled in HTML, CSS, JS, Tailwind, Bootstrap, and
+                      React. I prioritize accessibility and web standards for a
+                      seamless user experience."
+                      <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Doloremque minima nihil tempora explicabo blanditiis
+                      ipsum. -->
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <div class="flow" style="--flow-spacer: 1em">
+                    <h3 class="numbered-items__title fs-500 fw-bold">
+                      Backend Web Development
+                    </h3>
+                    <p class="numbered-items__body" data-width="wide">
+                      I can build web backend with expertise in JavaScript,
+                      Django, and Python. I build scalable, secure, and
+                      efficient web applications for optimized performance
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <div class="flow" style="--flow-spacer: 1em">
+                    <h3 class="numbered-items__title fs-500 fw-bold">
+                      Mobile Development
+                    </h3>
+                    <p class="numbered-items__body" data-width="wide">
+                      I'm a mobile developer skilled in JavaScript, HTML, and
+                      CSS. I create dynamic and responsive mobile apps.
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="carousel | padding-block-700" id="portfolio">
+        <h2 class="fs-secondary-heading fw-bold">What I've worked on</h2>
+        <!-- carousel here -->
+
+        <!-- CARD COMPONENT -->
+
+        <div class="cards-container container snaps-inline">
+          <!-- <a href="" class="linked-card"> -->
+          <div class="card">
+            <div class="card-imgBx">
+              <img
+                src="./assets/images/project_shortly_url_shortner.jpg"
+                alt=""
+              />
+              <h3 class="card-title">shortly</h3>
+            </div>
+            <div class="card-content">
+              <p>
+                URL shortener using HTML, CSS, JS and Shortly API. Simple, fast,
+                and efficient solution to share links."
+              </p>
+
+              <a href="" class="button margin-block-400" data-type="inverted"
+                >View</a
+              >
+            </div>
+          </div>
+          <!-- </a> -->
+          <!-- <a href="" class="linked-card"> -->
+          <div class="card">
+            <div class="card-imgBx">
+              <img
+                src="./assets/images/project_rock_paper_scissors.jpg"
+                alt=""
+              />
+              <h3 class="card-title">Rock Paper Scissors</h3>
+            </div>
+            <div class="card-content">
+              <p>
+                Rock Paper Scissors Lizard Spock game using HTML, CSS, and JS.
+                Interactive and engaging user experience.
+              </p>
+
+              <a href="" class="button margin-block-400" data-type="inverted"
+                >View</a
+              >
+            </div>
+          </div>
+          <!-- </a> -->
+          <!-- <a href="" class="linked-card"> -->
+          <div class="card">
+            <div class="card-imgBx">
+              <img
+                src="./assets/images/project_easybank_landing_page.jpg"
+                alt=""
+              />
+              <h3 class="card-title">EasyBank</h3>
+            </div>
+            <div class="card-content">
+              <p>
+                Business landing page using HTML, CSS, and JS. Modern and
+                responsive design for effective marketing.
+              </p>
+
+              <a href="" class="button margin-block-400" data-type="inverted"
+                >View</a
+              >
+            </div>
+          </div>
+          <!-- </a> -->
+          <!-- <a href="" class="linked-card"> -->
+          <div class="card">
+            <div class="card-imgBx">
+              <img
+                src="./assets/images/project_ip_address_tracker.jpg"
+                alt=""
+              />
+              <h3 class="card-title">IP Tracker</h3>
+            </div>
+            <div class="card-content">
+              <p>
+                IP address tracker with React and IPFY API. Accurate geolocation
+                and user-friendly interface
+              </p>
+
+              <a href="" class="button margin-block-400" data-type="inverted"
+                >View</a
+              >
+            </div>
+          </div>
+          <!-- </a> -->
+        </div>
+        <!--  -->
+
+        <button class="button">Let's Talk</button>
+      </section>
+
+      <!-- I might as well build an actual form rather using a href mailto: -->
+      <section class="cta | bg-primary-400 text-neutral-100 padding-block-700">
+        <!-- the ' | ' in the class name separates utility classes from components visually-->
+
+        <div class="container">
+          <div class="even-columns vertical-align-center">
+            <div>
+              <p class="fs-secondary-heading fw-bold">
+                Let's Work Together on your next project
+              </p>
+            </div>
+            <div class="justify-self-end-md">
+              <a
+                href="mailto:yomiadesoba@gmail.com"
+                class="button | push-right"
+                data-type="inverted"
+                >send me a mail</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer
+      class="primary-footer | bg-neutral-100 text-neutral-100 padding-block-700"
+    >
+      <div class="container">
+        <div class="primary-footer-wrapper |">
+          <div class="primary-footer-logo-social">
+            <a href=""
+              ><img src="./assets/icons/logo.svg" alt="Charles Portfolio"
+            /></a>
+
+            <ul role="list" aria-label="social links" class="social-list">
+              <li>
+                <a href="" aria-label="github">
+                  <svg class="social-icon">
+                    <use
+                      xlink:href="assets/icons/social-icons.svg#github"
+                    ></use>
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a href="" aria-label="whatsapp">
+                  <svg class="social-icon">
+                    <use
+                      xlink:href="assets/icons/social-icons.svg#whatsapp"
+                    ></use>
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a href="" aria-label="indeed">
+                  <svg class="social-icon">
+                    <use
+                      xlink:href="assets/icons/social-icons.svg#icons8-indeed"
+                    ></use>
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a href="" aria-label="fiverr">
+                  <svg class="social-icon">
+                    <use
+                      xlink:href="assets/icons/social-icons.svg#fiverr"
+                    ></use>
+                  </svg>
+                </a>
+              </li>
+              <!-- <li><a href=""></a></li>
+              <li><a href=""></a></li> -->
+            </ul>
+          </div>
+          <div class="primary-footer-copyright">
+            <p>Copyright Lorem ipsum dolor sit amet.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
